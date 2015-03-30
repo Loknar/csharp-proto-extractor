@@ -98,7 +98,7 @@ message ChannelInvitation {
 	optional bool rejoin = 3;
 	optional uint32 service_type = 4;
 	extend .bnet.protocol.invitation.Invitation {
-		optional bnet.protocol.channel_invitation.ChannelInvitation hannel_invitation = 105;
+		optional bnet.protocol.channel_invitation.ChannelInvitation channel_invitation = 105;
 	}
 }
 
@@ -129,7 +129,7 @@ message ChannelInvitationParams {
 	optional bool rejoin = 3;
 	optional uint32 service_type = 4;
 	extend .bnet.protocol.invitation.InvitationParams {
-		optional bnet.protocol.channel_invitation.ChannelInvitationParams hannel_params = 105;
+		optional bnet.protocol.channel_invitation.ChannelInvitationParams channel_params = 105;
 	}
 }
 

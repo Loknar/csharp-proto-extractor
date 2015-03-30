@@ -30,7 +30,7 @@ message ChannelState {
 	repeated .bnet.protocol.presence.FieldOperation field_operation = 2;
 	optional bool healing = 3;
 	extend .bnet.protocol.channel.ChannelState {
-		optional bnet.protocol.presence.ChannelState resence = 101;
+		optional bnet.protocol.presence.ChannelState presence = 101;
 	}
 }
 

@@ -71,7 +71,7 @@ message FriendInvitation {
 	optional bool first_received = 1;
 	repeated uint32 role = 2;
 	extend .bnet.protocol.invitation.Invitation {
-		optional bnet.protocol.friends.FriendInvitation riend_invite = 103;
+		optional bnet.protocol.friends.FriendInvitation friend_invite = 103;
 	}
 }
 
@@ -89,7 +89,7 @@ message FriendInvitationParams {
 	optional string invitee_display_name = 5;
 	repeated uint32 role = 6;
 	extend .bnet.protocol.invitation.InvitationParams {
-		optional bnet.protocol.friends.FriendInvitationParams riend_params = 103;
+		optional bnet.protocol.friends.FriendInvitationParams friend_params = 103;
 	}
 }
 
