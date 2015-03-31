@@ -1,6 +1,22 @@
 package PegasusShared;
 
 
+message AdventureProgress {
+	enum Flags {
+		OWNED = 1;
+		DEFEAT_HEROIC_MISSION_1 = 2;
+		DEFEAT_HEROIC_MISSION_2 = 4;
+		DEFEAT_HEROIC_MISSION_3 = 8;
+		DEFEAT_HEROIC_MISSION_4 = 16;
+		DEFEAT_CLASS_CHALLENGE_MISSION_1 = 256;
+		DEFEAT_CLASS_CHALLENGE_MISSION_2 = 512;
+	}
+	optional int32 wing_id = 1;
+	optional int32 progress = 2;
+	optional int32 ack = 3;
+	optional uint64 flags = 4;
+}
+
 enum BattlePayProvider {
 	BP_PROVIDER_BLIZZARD = 1;
 	BP_PROVIDER_APPLE = 2;
@@ -34,6 +50,27 @@ message CardDef {
 	optional int32 premium = 2;
 }
 
+enum DatabaseAction {
+	DB_A_UNKNOWN = 0;
+	DB_A_GET_DECK = 1;
+	DB_A_CREATE_DECK = 2;
+	DB_A_RENAME_DECK = 3;
+	DB_A_DELETE_DECK = 4;
+	DB_A_SET_DECK = 5;
+	DB_A_OPEN_BOOSTER = 6;
+	DB_A_GAMES_INFO = 7;
+}
+
+enum DatabaseResult {
+	DB_E_SQL_EX = -1;
+	DB_E_UNKNOWN = 0;
+	DB_E_SUCCESS = 1;
+	DB_E_NOT_OWNED = 2;
+	DB_E_CONSTRAINT = 3;
+	DB_E_NOT_FOUND = 4;
+	DB_E_EXCEPTION = 9;
+}
+
 message Date {
 	optional int32 year = 1;
 	optional int32 month = 2;
@@ -48,6 +85,13 @@ message CardStack {
 	optional .PegasusShared.Date latest_insert_date = 2;
 	optional int32 count = 3;
 	optional int32 num_seen = 4;
+}
+
+message DeckCardData {
+	optional .PegasusShared.CardDef def = 1;
+	optional int32 handle = 2;
+	optional int32 qty = 3;
+	optional int32 prev = 5;
 }
 
 message DeckInfo {
@@ -208,5 +252,12 @@ message ProfileNoticeRewardMount {
 		ID = 7;
 	}
 	optional int32 mount_id = 1;
+}
+
+enum ProtocolVersion {
+	PV_MAJOR = 2;
+	PV_MINOR = 4;
+	PV_PATCH = 0;
+	PV_SKU = 0;
 }
 
